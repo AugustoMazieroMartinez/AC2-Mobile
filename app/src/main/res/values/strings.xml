@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AC2</string>
+    <string name="nome_remedio">Nome Do Remédio</string>
+    <string name="horario_remedio">Horário Para Tomar</string>
+    <string name="tomado">Tomado</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="salvar">Salvar</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="app_name">AC2</string>
+    <string name="nome_remedio">Medicine Name</string>
+    <string name="horario_remedio">Time to take</string>
+    <string name="tomado">Taken</string>
+    <string name="cadastrar">Sign Up</string>
+    <string name="salvar">Save</string>
+</resources>
