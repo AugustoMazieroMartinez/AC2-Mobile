@@ -37,6 +37,13 @@ public class TelaCadastro_Edicao extends AppCompatActivity {
         txtHorario = findViewById(R.id.txtHorario);
         cbxTomado = findViewById(R.id.cbxTomado);
 
+        if (id != 0) {
+            btnSalvar.setText(R.string.salvar);
+            Cursor cursor = bancoHelper.listarRemediosPorId(id);
+            txtNomeRemedio.setText(cursor.getString(1));
+            txtHorario.setText(cursor.getString(2));
+            cbxTomado.setChecked(cursor.getInt(3) == 1);
+        }
         btnSalvar.setOnClickListener(V -> {
             String nome = txtNomeRemedio.getText().toString();
             String horario = txtHorario.getText().toString();
@@ -45,7 +52,7 @@ public class TelaCadastro_Edicao extends AppCompatActivity {
             if(!nome.isEmpty() && !horario.isEmpty()){
                 long resultado = bancoHelper.inserirRemedio(nome, horario, tomado);
                 if(resultado != 1){
-                    Toast.makeText(this, "Livro Salvo!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Remédio Salvo!", Toast.LENGTH_SHORT).show();
                     txtNomeRemedio.setText("");
                     txtHorario.setText("");
                     cbxTomado.setChecked(false);
@@ -54,14 +61,10 @@ public class TelaCadastro_Edicao extends AppCompatActivity {
                     Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                 }
             }
-            if (id != 0) {
-                btnSalvar.setText(R.string.salvar);
-                Cursor cursor = bancoHelper.listarRemediosPorId(id);
-                txtNomeRemedio.setText(cursor.getString(1));
-                txtHorario.setText(cursor.getString(2));
-                cbxTomado.setChecked(cursor.getInt(3) == 1);
+            else if(id != 0){
                 bancoHelper.atualizarRemedio(id, txtNomeRemedio.getText().toString(), txtHorario.getText().toString(), cbxTomado.isChecked());
             }
+
         });
     }
 }
